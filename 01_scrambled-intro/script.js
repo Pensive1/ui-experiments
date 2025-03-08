@@ -12,8 +12,7 @@
 
 // Create a target element in the DOM (if not already present)
 let targetElement = document.getElementById("scrambleIntro");
-let sampleInput = document.querySelector(".group__sampleTxt");
-let btnRun = document.getElementById("runFunction");
+let form = document.getElementById("test");
 
 let strExample = "Hello World";
 let displayStr = ""; // The string being built progressively
@@ -94,8 +93,11 @@ async function animateString() {
 animateString();
 
 // Start the animation
-btnRun.addEventListener("click", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
-  strExample = sampleInput.value.length ? sampleInput.value : "Hello World";
+  const data = new FormData(form).entries();
+  const [sampleTxt] = data;
+
+  strExample = sampleTxt[1].length ? sampleTxt[1] : "Hello World";
   animateString();
 });
