@@ -54,7 +54,7 @@ function scrambleRevealChar(char, count, speedMs) {
         // Update UI with scrambled character
         targetElement.textContent = displayStr + genRandomChar();
         scrambleCount++;
-        setTimeout(scrambleLoop, speedMs);
+        setTimeout(scrambleLoop, speedMs); // <- Recursion
       } else {
         // The resolved character is sent to the calling function to append it to the display string variable
         resolve(char);
@@ -95,8 +95,8 @@ animateString();
 // Start the animation
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const data = new FormData(form).entries();
-  const [sampleTxt] = data;
+  const data = new FormData(form);
+  const sampleTxt = data.get("sampleTxt");
 
   strExample = sampleTxt[1].length ? sampleTxt[1] : "Hello World";
   animateString();
