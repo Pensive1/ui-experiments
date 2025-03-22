@@ -98,6 +98,8 @@ form.addEventListener("submit", (e) => {
   const data = new FormData(form);
   const sampleTxt = data.get("sampleTxt");
 
-  strExample = sampleTxt[1].length ? sampleTxt[1] : "Hello World";
+  console.log(sampleTxt);
+
+  strExample = sampleTxt.length ? sampleTxt : "Hello World";
   animateString();
 });
